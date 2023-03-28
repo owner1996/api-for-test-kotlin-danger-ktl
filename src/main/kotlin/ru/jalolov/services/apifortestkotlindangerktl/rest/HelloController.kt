@@ -17,4 +17,5 @@ class HelloController {
     ): String = "bye, $name"
 
     // комментарий для теста
+    // комментарий для теста #1
 }
