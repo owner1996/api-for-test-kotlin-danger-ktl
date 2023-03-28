@@ -15,4 +15,6 @@ class HelloController {
     fun bye(
         @RequestParam(defaultValue = "user") name: String
     ): String = "bye, $name"
+
+    // комментарий для теста
 }
