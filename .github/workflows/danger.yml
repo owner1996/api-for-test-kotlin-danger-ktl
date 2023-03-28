@@ -15,4 +15,5 @@ jobs:
         uses: docker://ghcr.io/danger/danger-kotlin:1.2.0
         with:
           args: --failOnErrors --no-publish-check
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
