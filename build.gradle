@@ -1,0 +1,42 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+	id 'org.springframework.boot' version '3.0.5'
+	id 'io.spring.dependency-management' version '1.1.0'
+	id 'org.jetbrains.kotlin.jvm' version '1.7.22'
+	id 'org.jetbrains.kotlin.plugin.spring' version '1.7.22'
+	id 'io.gitlab.arturbosch.detekt' version '1.22.0'
+}
+
+group = 'ru.jalolov.services'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+detekt {
+	buildUponDefaultConfig = true // preconfigure defaults
+	allRules = false // activate all available (even unstable) rules.
+	config = files("$projectDir/config/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
+	baseline = file("$projectDir/config/baseline.xml") // a way of suppressing issues before introducing detekt
+}
+
+tasks.withType(KotlinCompile) {
+	kotlinOptions {
+		freeCompilerArgs = ['-Xjsr305=strict']
+		jvmTarget = '17'
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
