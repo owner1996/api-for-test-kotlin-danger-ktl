@@ -1,4 +1,5 @@
 import systems.danger.kotlin.*
+import org.apache.commons.lang3.text.WordUtils
 
 danger(args) {
 
