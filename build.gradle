@@ -23,6 +23,7 @@ dependencies {
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation "systems.danger:danger-kotlin-sdk:1.2"
+	implementation 'io.github.ackeecz:danger-kotlin-detekt:0.1.4'
 }
 
 detekt {
