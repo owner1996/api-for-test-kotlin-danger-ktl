@@ -13,10 +13,6 @@ register plugin DetektPlugin
 
 danger(args) {
 
-    val allSourceFiles = git.modifiedFiles + git.createdFiles
-    val changelogChanged = allSourceFiles.contains("CHANGELOG.md")
-    val sourceChanges = allSourceFiles.firstOrNull { it.contains("src") }
-
     onGitHub {
         val isTrivial = pullRequest.title.contains("#trivial")
 
@@ -31,7 +27,7 @@ danger(args) {
         }
     }
 
-    val detektReports = Files.find(Paths.get(""), 10, BiPredicate { path, attributes ->
+    val detektReports = Files.find(Paths.get(""), 10, BiPredicate { path, _ ->
         val fileName = path.toFile().name
         fileName.endsWith("detekt.xml")
     }).map { it.toFile() }.collect(Collectors.toList())
