@@ -13,7 +13,7 @@ register plugin DetektPlugin
 
 danger(args) {
 
-  danger  val allSourceFiles = git.modifiedFiles + git.createdFiles
+    val allSourceFiles = git.modifiedFiles + git.createdFiles
     val changelogChanged = allSourceFiles.contains("CHANGELOG.md")
     val sourceChanges = allSourceFiles.firstOrNull { it.contains("src") }
 
