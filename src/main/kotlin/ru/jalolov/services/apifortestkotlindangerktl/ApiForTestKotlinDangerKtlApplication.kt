@@ -9,7 +9,7 @@ class ApiForTestKotlinDangerKtlApplication
 fun main(args: Array<String>) {
 	runApplication<ApiForTestKotlinDangerKtlApplication>(*args)
 	/*
-	*
+	* 123
 	*
 	*
 	*
