@@ -13,7 +13,7 @@ register plugin DetektPlugin
 
 danger(args) {
 
-    onGitHub {
+    onBitbucket {
         val isTrivial = pullRequest.title.contains("#trivial")
 
         // Big PR Check
