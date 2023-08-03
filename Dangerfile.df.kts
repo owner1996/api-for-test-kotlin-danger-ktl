@@ -9,12 +9,9 @@ import java.nio.file.Paths
 import java.util.function.BiPredicate
 import java.util.stream.Collectors
 
-register plugin DetektPlugin
-
 danger(args) {
 
     onGitHub {
-        val isTrivial = pullRequest.title.contains("#trivial")
 
         // Big PR Check
         if ((pullRequest.additions ?: 0) - (pullRequest.deletions ?: 0) > 300) {
@@ -27,12 +24,6 @@ danger(args) {
         }
     }
 
-    val detektReports = Files.find(Paths.get(""), 10, BiPredicate { path, _ ->
-        val fileName = path.toFile().name
-        fileName.endsWith("detekt.xml")
-    }).map { it.toFile() }.collect(Collectors.toList())
-
-    DetektPlugin.parseAndReport(*detektReports.toTypedArray())
 }
 
 /*
